@@ -49,7 +49,7 @@
     <div id="content">
       <div class="wrapper">
         <div id="Tweet" class="panel">
-          <h2>Tweet</h2>
+          <h2>You can tweet</h2>
             <p>
               <form action="??????" method="post">
                 <textarea name="text" class="tweettext">yedoooo</textarea>
@@ -74,18 +74,19 @@
         var $ul = $('ul');
         $ul.html('');
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text(tweet.created_at + ': @' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($ul);
-          index -= 1;
+       // var loadnew = setInterval(funciton(){
+          var index = streams.home.length - 1;
+          while(index >= 0){
+            var tweet = streams.home[index];
+            var $tweet = $('<div></div>');
+            $tweet.text(tweet.created_at + ': @' + tweet.user + ': ' + tweet.message);
+            $tweet.appendTo($ul);
+            index -= 1;
         }
-        $("#Tweeted").click(function(){
-          $("#recent").prepend('.tweettext');
+     // }, 900);
   });
-
+          $("#Tweeted").click(function(){
+          $("#recent").prepend('.tweettext');
       });
 
     </script>
