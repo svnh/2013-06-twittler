@@ -51,8 +51,8 @@
           <h2>You can tweet</h2>
             <p>
               <form action="??????" method="post">
-                <textarea name="text" class="tweettext">just kidding</textarea>
-                <input type="submit" value="Tweet" id="Tweeted">
+                <textarea name="text" class="tweettext">tweet</textarea>
+                <input type="submit" value="JK this doesn't work" id="Tweeted">
               </form>
             </p>
         </div>
@@ -72,23 +72,11 @@
         var $ul = $('ul');
         $ul.html('');
 
-        //var timestamp = null;
-
-       /* var checkfortweets = function() {
-          var timestamp = new Date ();
-          var first = true;
-          if (first || tweet.created_at > timestamp)
-            $tweet.text(tweet.created_at + ': @' + tweet.user + ': ' + tweet.message);
-            $tweet.appendTo($ul);
-            first = false;
-            timestamp = tweet.created_at;
-        }
-*/
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
-            $tweet.text(tweet.created_at + ': @' + tweet.user + ': ' + tweet.message);
+            $tweet.html(tweet.created_at + ': @' + '<a href="?username=' + tweet.user + '">'+ tweet.user +'</a>' + ': ' + tweet.message);
             $tweet.appendTo($ul);
           index -= 1;
         };
@@ -100,7 +88,7 @@
           var timestamp = new Date ();
           var first = true;
           if (first || tweet.created_at > timestamp) {
-            $tweet.html(tweet.created_at + ': @' + <a href="file://localhost/Users/savannahkunovsky/2013-06-twittler/index.html?username= +'tweet.user'" >tweet.user</a> + ': ' + tweet.message);
+            $tweet.html(tweet.created_at + ': @' + '<a href="?username=' + tweet.user + '">'+ tweet.user +'</a>' + ': ' + tweet.message);
             $tweet.prependTo($ul);
             index -= 1;
             first = false;
