@@ -3,7 +3,6 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
-    <script src="underbar.js"></script>
     <style>
       @text-color: #4169E1;
       @border-color: #FF0000;
@@ -52,7 +51,7 @@
           <h2>You can tweet</h2>
             <p>
               <form action="??????" method="post">
-                <textarea name="text" class="tweettext">yedoooo</textarea>
+                <textarea name="text" class="tweettext">just kidding</textarea>
                 <input type="submit" value="Tweet" id="Tweeted">
               </form>
             </p>
@@ -60,7 +59,6 @@
         <div id="Twitter Feed" class="panel">
           <h3>Recent Tweets</h3>
             <div class="wrapper">
-              <input type="button" value="Load New Tweets" onClick="window.location.reload()">
               <ul id="recent"> put recent tweets here </ul>
             </div>
         </div>
@@ -74,16 +72,43 @@
         var $ul = $('ul');
         $ul.html('');
 
-       // var loadnew = setInterval(funciton(){
-          var index = streams.home.length - 1;
-          while(index >= 0){
-            var tweet = streams.home[index];
-            var $tweet = $('<div></div>');
+        //var timestamp = null;
+
+       /* var checkfortweets = function() {
+          var timestamp = new Date ();
+          var first = true;
+          if (first || tweet.created_at > timestamp)
             $tweet.text(tweet.created_at + ': @' + tweet.user + ': ' + tweet.message);
             $tweet.appendTo($ul);
-            index -= 1;
+            first = false;
+            timestamp = tweet.created_at;
         }
-     // }, 900);
+*/
+        var index = streams.home.length - 1;
+        while(index >= 0){
+          var tweet = streams.home[index];
+          var $tweet = $('<div></div>');
+            $tweet.text(tweet.created_at + ': @' + tweet.user + ': ' + tweet.message);
+            $tweet.appendTo($ul);
+          index -= 1;
+        };
+        
+        var loadnew = function(){
+          var index = streams.home.length - 1;
+          var tweet = streams.home[index];
+          var $tweet = $('<div></div>');
+          var timestamp = new Date ();
+          var first = true;
+          if (first || tweet.created_at > timestamp) {
+            $tweet.html(tweet.created_at + ': @' + <a href="file://localhost/Users/savannahkunovsky/2013-06-twittler/index.html?username= +'tweet.user'" >tweet.user</a> + ': ' + tweet.message);
+            $tweet.prependTo($ul);
+            index -= 1;
+            first = false;
+          }
+        };
+  
+
+  setInterval(loadnew, 1500);
   });
           $("#Tweeted").click(function(){
           $("#recent").prepend('.tweettext');
